@@ -63,7 +63,21 @@ classroom.loc[classroom.Name.notnull()]  # similarly we can use isnull() as well
 
 #Assigning Value
 
-classroom["Roll_No"]=range(4,len(classroom)+4) #Assigning values 
+classroom["Roll_No"]=range(4,len(classroom)+4) 
+
+# Summary Functions and Maps
+
+classroom["Roll_No"].describe()
+
+classroom["Roll_No"].mean()
+
+classroom["Roll_No"].unique()
+
+classroom["Roll_No"].value_counts()
+
+mean_to_subtract = classroom["Roll_No"].mean()
+
+#map()
 
 
 
