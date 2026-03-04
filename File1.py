@@ -79,6 +79,60 @@ mean_to_subtract = classroom["Roll_No"].mean()
 
 #map()
 
+classroom["Roll_No"].map(lambda p:p-mean_to_subtract)
+
+#apply() 
+
+#It is applied on DataFrames
+
+def remean_points(row):
+    row.points = row.points - review_points_mean
+    return row
+
+reviews.apply(remean_points, axis='columns')
+
+# If we had called reviews.apply() with axis='index', then instead of passing a function to transform each row, we would need to give a function to transform each column.
+# map() and apply() return new, transformed Series and DataFrames, respectively. They don't modify the original data they're called on.
+
+----------------------------------------------------------
+
+# Pandas provides many common mapping operations as built-ins.
+
+mean_to_subtract = classroom["Roll_No"].mean()
+classroom["Roll_No"] - mean_to_subtract
+
+# Here we are performing an operation between a lot of values on the left-hand side (everything in the Series) and a single value on the right-hand side (the mean value). 
+#Pandas looks at this expression and figures out that we must mean to subtract that mean value from every value in the dataset.
+# Pandas will also understand what to do if we perform these operations between Series of equal length. 
+#For example, an easy way of combining country and region information in the dataset would be to do the following:
+
+#Example - 
+reviews.country + " - " + reviews.region_1
+
+#Output - 
+0            Italy - Etna
+1                     NaN
+               ...       
+129969    France - Alsace
+129970    France - Alsace
+Length: 129971, dtype: object
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
